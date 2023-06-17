@@ -15,7 +15,6 @@ use App\Http\Controllers\API\PihakKeduaController;
 use App\Http\Controllers\API\ReferensiController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('auth/login', 'login');
