@@ -1,0 +1,126 @@
+.page-break {
+    page-break-after: always;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+}
+
+.fs-10 {
+    font-size: 10pt;
+}
+
+.fs-11 {
+    font-size: 11pt;
+}
+
+.fs-12 {
+    font-size: 12pt;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.text-indent {
+    text-indent: 16px;
+}
+
+.text-no-wrap {
+    white-space: nowrap;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.image-block {
+    display: block;
+}
+
+.image-50 {
+    padding: 12px 12px;
+    width: 50px;
+    height: 50px;
+}
+
+.image-100 {
+    padding: 12px 12px;
+    width: 100px;
+    height: 100px;
+}
+
+.image-200 {
+    padding: 12px 12px;
+    width: 200px;
+    height: 200px;
+}
+
+.image-300 {
+    padding: 12px 12px;
+    width: 300px;
+    height: 300px;
+}
+
+.vertical-top {
+    vertical-align: top;
+}
+
+.vertical-center {
+    vertical-align: center;
+}
+
+.vertical-bottom {
+    vertical-align: bottom;
+}
+
+.border {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.border-collapse {
+    border-collapse: collapse;
+}
+
+ol {
+    padding-left: 1.3em;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.p-5 {
+    padding: 5px 5px;
+}
