@@ -133,6 +133,6 @@ Route::controller(PdfController::class)->middleware('auth:sanctum')->group(funct
     Route::get('pdf/bast-makan/{id_bast_makan}', 'bast_makan');
 });
 
-Route::controller(ExcelController::class)->group(function () {
+Route::controller(ExcelController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('excel/laporan-bulanan', 'laporan_bulanan');
 });

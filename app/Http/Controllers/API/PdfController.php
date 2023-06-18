@@ -20,12 +20,11 @@ use Illuminate\Http\Request;
 
 class PdfController extends Controller
 {
-    private $alamat, $user;
+    private $alamat;
 
     public function __construct()
     {
         $this->alamat = Alamat::where('utama', 1)->first();
-        $this->user = auth()->user();
     }
 
     public function imigran(Request $request, $id_imigran)
@@ -66,7 +65,7 @@ class PdfController extends Controller
         $pdf = Pdf::loadView('pdf.laporan-imigran', [
             'data' => $data,
             'alamat' => $this->alamat,
-            'user' => $this->user,
+            'user' => User::findOrFail($request->get('id_user')),
             'start_date' => Carbon::parse($request->get('start_date'))->isoFormat('dddd, D MMMM Y'),
             'end_date' => Carbon::parse($request->get('end_date'))->isoFormat('dddd, D MMMM Y'),
         ])->setPaper('a4', 'potrait');
