@@ -76,18 +76,35 @@
             </td>
         </tr>
         @foreach ($data as $item)
-            <tr class="border">
-                <td class="border text-center">{{ $loop->iteration }}</td>
-                <td class="border text-left">{{ $item->nama ?? '-' }}</td>
-                <td class="border text-center">{{ ucwords(strtolower($item->provinsi->nama)) ?? '-' }}</td>
-                <td class="border text-center">{{ $item->paspor ?? '-' }}</td>
-                <td class="border text-center">
-                    {{ \Carbon\Carbon::parse($item->tanggal_kedatangan)->isoFormat('D/MM/Y') ?? '-' }}
-                </td>
-                <td class="border text-center">{{ $item->layanan->nama ?? '-' }}</td>
-                <td class="border text-center">{{ $item->kepulangan->nama ?? '-' }}</td>
-                <td class="border text-center">{{ $item->terlaksana == 1 ? 'Terlaksana' : 'Proses' }}</td>
-            </tr>
+            @if ($user->roles->pluck('name')[0] == 'Admin')
+                <tr class="border">
+                    <td class="border text-center">{{ $loop->iteration }}</td>
+                    <td class="border text-left">{{ $item->nama ?? '-' }}</td>
+                    <td class="border text-center">{{ ucwords(strtolower($item->provinsi->nama)) ?? '-' }}</td>
+                    <td class="border text-center">{{ $item->paspor ?? '-' }}</td>
+                    <td class="border text-center">
+                        {{ \Carbon\Carbon::parse($item->tanggal_kedatangan)->isoFormat('D/MM/Y') ?? '-' }}
+                    </td>
+                    <td class="border text-center">{{ $item->layanan->nama ?? '-' }}</td>
+                    <td class="border text-center">{{ $item->kepulangan->nama ?? '-' }}</td>
+                    <td class="border text-center">{{ $item->terlaksana == 1 ? 'Terlaksana' : 'Proses' }}</td>
+                </tr>
+            @else
+                @if ($item->terlaksana == 0 || ($item->terlaksana == 1 && $item->pmi->id_group == $user->id_group))
+                    <tr class="border">
+                        <td class="border text-center">{{ $loop->iteration }}</td>
+                        <td class="border text-left">{{ $item->nama ?? '-' }}</td>
+                        <td class="border text-center">{{ ucwords(strtolower($item->provinsi->nama)) ?? '-' }}</td>
+                        <td class="border text-center">{{ $item->paspor ?? '-' }}</td>
+                        <td class="border text-center">
+                            {{ \Carbon\Carbon::parse($item->tanggal_kedatangan)->isoFormat('D/MM/Y') ?? '-' }}
+                        </td>
+                        <td class="border text-center">{{ $item->layanan->nama ?? '-' }}</td>
+                        <td class="border text-center">{{ $item->kepulangan->nama ?? '-' }}</td>
+                        <td class="border text-center">{{ $item->terlaksana == 1 ? 'Terlaksana' : 'Proses' }}</td>
+                    </tr>
+                @endif
+            @endif
         @endforeach
     </table>
     <p class="text-justify text-indent">

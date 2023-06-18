@@ -50,33 +50,27 @@ class PdfController extends Controller
 
     public function laporan_imigran(Request $request)
     {
-        $data_query = Imigran::whereBetween('tanggal_kedatangan', [$request->get('start_date'), $request->get('end_date')]);
+        if ($request->get('start_date') && $request->get('end_date') && $request->get('id_user')) {
+            $data = Imigran::whereBetween('tanggal_kedatangan', [$request->get('start_date'), $request->get('end_date')])->get();
 
-        if ($request->get('id_group')) {
-            $data_query->where('terlaksana', 0)->orWhereHas('pmi', function ($query) use ($request) {
-                $query->where('id_group', $request->get('id_group'));
-            });
-        } else {
-            $data_query->whereHas('jenazah');
+            $pdf = Pdf::loadView('pdf.laporan-imigran', [
+                'data' => $data,
+                'alamat' => $this->alamat,
+                'user' => User::findOrFail($request->get('id_user')),
+                'start_date' => Carbon::parse($request->get('start_date'))->isoFormat('dddd, D MMMM Y'),
+                'end_date' => Carbon::parse($request->get('end_date'))->isoFormat('dddd, D MMMM Y'),
+            ])->setPaper('a4', 'potrait');
+
+            if ($request->get('download') == "true") {
+                $export = $pdf->download("Laporan-" . Carbon::parse($request->get('start_date'))->isoFormat('d-m-Y') . "-" . Carbon::parse($request->get('end_date'))->isoFormat('d-m-Y') . ".pdf");
+            } else {
+                $export = $pdf->stream("Laporan-" . Carbon::parse($request->get('start_date'))->isoFormat('d-m-Y') . "-" . Carbon::parse($request->get('end_date'))->isoFormat('d-m-Y') . ".pdf");
+            }
+
+            return $export;
         }
 
-        $data = $data_query->get();
-
-        $pdf = Pdf::loadView('pdf.laporan-imigran', [
-            'data' => $data,
-            'alamat' => $this->alamat,
-            'user' => User::findOrFail($request->get('id_user')),
-            'start_date' => Carbon::parse($request->get('start_date'))->isoFormat('dddd, D MMMM Y'),
-            'end_date' => Carbon::parse($request->get('end_date'))->isoFormat('dddd, D MMMM Y'),
-        ])->setPaper('a4', 'potrait');
-
-        if ($request->get('download') == "true") {
-            $export = $pdf->download("Laporan-" . Carbon::parse($request->get('start_date'))->isoFormat('d-m-Y') . "-" . Carbon::parse($request->get('end_date'))->isoFormat('d-m-Y') . ".pdf");
-        } else {
-            $export = $pdf->stream("Laporan-" . Carbon::parse($request->get('start_date'))->isoFormat('d-m-Y') . "-" . Carbon::parse($request->get('end_date'))->isoFormat('d-m-Y') . ".pdf");
-        }
-
-        return $export;
+        return abort(404);
     }
 
     public function bast_darat(Request $request, $id_bast_darat)
