@@ -16,6 +16,11 @@
             <td class="w-75 vertical-top">
                 <table>
                     <tr>
+                        <td class="vertical-top p-0 text-no-wrap">Brafaks</td>
+                        <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                        <td class="vertical-top p-0">{{ $imigran->brafaks ?? '-' }}</td>
+                    </tr>
+                    <tr>
                         <td class="vertical-top p-0 text-no-wrap">Nama</td>
                         <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
                         <td class="vertical-top p-0">{{ $imigran->nama ?? '-' }}</td>
@@ -24,11 +29,6 @@
                         <td class="vertical-top p-0 text-no-wrap">Paspor</td>
                         <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
                         <td class="vertical-top p-0">{{ $imigran->paspor ?? '-' }}</td>
-                    </tr>
-                    <tr>
-                        <td class="vertical-top p-0 text-no-wrap">Brafaks</td>
-                        <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
-                        <td class="vertical-top p-0">{{ $imigran->brafaks ?? '-' }}</td>
                     </tr>
                     <tr>
                         <td class="vertical-top p-0 text-no-wrap">Jenis Kelamin</td>
@@ -52,6 +52,12 @@
                         <td class="vertical-top p-0">{{ $imigran->kawasan->nama ?? '-' }}</td>
                     </tr>
                     <tr>
+                        <td class="vertical-top p-0 text-no-wrap">Alamat</td>
+                        <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                        <td class="vertical-top p-0">{{ ucwords(strtolower($imigran->alamat)) ?? '-' }}
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="vertical-top p-0 text-no-wrap">Kabupaten/Kota</td>
                         <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
                         <td class="vertical-top p-0">{{ ucwords(strtolower($imigran->kab_kota->nama)) ?? '-' }}
@@ -61,6 +67,12 @@
                         <td class="vertical-top p-0 text-no-wrap">Provinsi</td>
                         <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
                         <td class="vertical-top p-0">{{ ucwords(strtolower($imigran->provinsi->nama)) ?? '-' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="vertical-top p-0 text-no-wrap">No. Telepon</td>
+                        <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                        <td class="vertical-top p-0">{{ $imigran->no_telp ?? '-' }}
                         </td>
                     </tr>
                     <tr>

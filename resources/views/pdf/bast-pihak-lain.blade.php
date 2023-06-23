@@ -81,7 +81,7 @@
             <td class="vertical-top p-0 text-no-wrap">Instansi</td>
             <td class="vertical-top p-0">&nbsp;&nbsp;&nbsp;:&nbsp;</td>
             <td class="vertical-top p-0">
-                {{ ucwords(strtolower($bast_pihak_lain->pihak_kedua->jabatan)) ?? '-' }}
+                {{ ucwords(strtolower($bast_pihak_lain->pihak_kedua->instansi)) ?? '-' }}
             </td>
         </tr>
         <tr>
