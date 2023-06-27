@@ -39,4 +39,9 @@ class Layanan extends Model
     {
         return $this->belongsToMany(Cargo::class, 'layanan_cargo', 'id_layanan', 'id_cargo');
     }
+
+    public function imigran()
+    {
+        return $this->hasMany(Imigran::class, 'id_layanan', 'id');
+    }
 }

@@ -28,12 +28,12 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::controller(DashboardController::class)->middleware('auth:sanctum')->group(function () {
-    Route::get('dashboard/total', 'total');
-    Route::get('dashboard/chart-jenis-kelamin/{id_layanan}', 'chart_jenis_kelamin');
-    Route::get('dashboard/chart-masalah/{id_layanan}', 'chart_masalah');
-    Route::get('dashboard/chart-negara/{id_layanan}', 'chart_negara');
-    Route::get('dashboard/chart-provinsi/{id_layanan}', 'chart_provinsi');
-    Route::get('dashboard/chart-kab-kota/{id_layanan}', 'chart_kab_kota');
+    Route::get('dashboard/total/layanan', 'total_layanan');
+    Route::get('dashboard/total/jenis-kelamin/{id_layanan}', 'total_jenis_kelamin');
+    Route::get('dashboard/total/masalah/{id_layanan}', 'total_masalah');
+    Route::get('dashboard/total/negara/{id_layanan}', 'total_negara');
+    Route::get('dashboard/total/provinsi/{id_layanan}', 'total_provinsi');
+    Route::get('dashboard/total/kab-kota/{id_layanan}', 'total_kab_kota');
 });
 
 Route::controller(ReferensiController::class)->middleware('auth:sanctum')->group(function () {
