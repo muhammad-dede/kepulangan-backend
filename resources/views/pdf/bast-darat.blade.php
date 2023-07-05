@@ -317,6 +317,12 @@
             </td>
         </tr>
     </table>
+    {{-- Foto Serah Terima --}}
+    <div class="page-break"></div>
+    <h4 class="text-center">
+        <u>FOTO SERAH TERIMA</u>
+    </h4>
+    <img class="w-100" src="{{ $bast_darat->foto_serah_terima }}" alt="foto-serah-terima">
 </body>
 
 </html>

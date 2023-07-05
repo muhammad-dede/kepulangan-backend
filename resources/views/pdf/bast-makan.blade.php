@@ -191,8 +191,8 @@
                     {{ $makan->imigran->provinsi->nama ?? '-' }}
                 </td>
                 <td class="border text-center">
-                    <img class="image-block image-50" src="data:image/png;base64, {!! base64_encode(QrCode::format('svg')->generate($makan->imigran->paspor)) !!}"
-                        alt="QR Code Petugas">
+                    <img class="image-block image-50" src="data:image/png;base64, {!! base64_encode(QrCode::format('svg')->generate(url('/imigran') . '/' . $makan->imigran->id)) !!}"
+                        alt="QR Code">
                 </td>
             </tr>
         @endforeach
