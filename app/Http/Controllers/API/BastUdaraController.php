@@ -330,7 +330,7 @@ class BastUdaraController extends Controller
             File::delete(public_path($this->path . '/' . basename($data->foto_serah_terima)));
         }
         if ($data->spu) {
-            $spu = Spu::findOrFail($id);
+            $spu = Spu::where('id_bast_udara', $id)->first();
             if ($spu->spu_tiket) {
                 foreach ($spu->spu_tiket as $spu_tiket) {
                     if (File::exists(public_path($this->path . '/' . basename($spu_tiket->foto_tiket)))) {

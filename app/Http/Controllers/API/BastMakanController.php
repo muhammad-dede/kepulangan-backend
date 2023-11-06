@@ -77,18 +77,18 @@ class BastMakanController extends Controller
             ], 400);
         }
 
-        $check_terlaksana = BastMakan::where('terlaksana', 0)->first();
-        if ($check_terlaksana) {
-            return response()->json([
-                'message' => "Terdapat Fasilitas Makan yang belum diselesaikan!",
-            ], 400);
-        }
-        $check_same_value = BastMakan::where('tanggal_serah_terima', $request->tanggal_serah_terima)->where('waktu_serah_terima', $request->waktu_serah_terima)->count();
-        if ($check_same_value > 0) {
-            return response()->json([
-                'message' => "Purchase Order dengan Tanggal dan waktu tersebut telah dibuat sebelumnya.",
-            ], 400);
-        }
+        // $check_terlaksana = BastMakan::where('terlaksana', 0)->first();
+        // if ($check_terlaksana) {
+        //     return response()->json([
+        //         'message' => "Terdapat Fasilitas Makan yang belum diselesaikan!",
+        //     ], 400);
+        // }
+        // $check_same_value = BastMakan::where('tanggal_serah_terima', $request->tanggal_serah_terima)->where('waktu_serah_terima', $request->waktu_serah_terima)->count();
+        // if ($check_same_value > 0) {
+        //     return response()->json([
+        //         'message' => "Purchase Order dengan Tanggal dan waktu tersebut telah dibuat sebelumnya.",
+        //     ], 400);
+        // }
 
         $data = BastMakan::create([
             'purchase_order' => $request->purchase_order,
